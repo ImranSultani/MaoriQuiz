@@ -14,10 +14,19 @@ namespace MaoriQuizqqeqe
             Console.WriteLine("################################\nWhat's your name?");
             string nameEntered = Console.ReadLine();
 
+            bool isValid = nameEntered.All(c => char.IsLetter(c) || c == ' ');
+
+            if (isValid)
+            {
+                Console.WriteLine($"Hello, {nameEntered}");
+            }
+            else
+            {
+                Console.WriteLine("Your name has invalid characters!");
+                return;
+            }
             Console.WriteLine("\n################################\nWhat difficulty do you want to select?\n Easy(e) - Medium(m) - Hard(h)");
             char diffucultySelector = Convert.ToChar(Console.ReadLine());
-            switch
         }
         }
     }
-}
