@@ -25,6 +25,23 @@ namespace MaoriQuizqqeqe
                 Console.WriteLine("Your name has invalid characters!");
                 return;
             }
+
+            bool nameLengthIsOver1 = nameEntered.Length < 2;
+
+            if (nameLengthIsOver1)
+            {
+                Console.WriteLine("Your name has to be over 1 character long!");
+                return;
+            }
+
+            bool nameLengthIsUnder30 = nameEntered.Length > 30;
+
+            if (nameLengthIsUnder30)
+            {
+                Console.WriteLine("Your name has to be under 30 characters!");
+                return;
+            }
+
             Console.WriteLine("\n################################\nWhat difficulty do you want to select?\n Easy(e) - Medium(m) - Hard(h)");
             char diffucultySelector = Convert.ToChar(Console.ReadLine());
         }
