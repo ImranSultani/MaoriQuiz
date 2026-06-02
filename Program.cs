@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace MaoriQuizqqeqe
 {
     internal class Program
@@ -10,9 +12,11 @@ namespace MaoriQuizqqeqe
 
             String[] hardQuestions = { "1. Which of the following correctly translates to \"I have two, maybe four pairs of socks\"?\nA) E rua pea ōku tōkena, e whā rānei.\nB) E rua, e whā pea ōku tōkena.\nC) E rua pea aku tōkena, e toru pea.\nD) E whā pea ōku tōkena, e waru pea.", "2. In Māori grammar, possession is strictly categorized. Which of the following items requires an (O)-category possessive marker (e.g., ōku instead of āku)?\nA) Your food and drink\nB) Your clothes and shoes\nC) Your younger brother or sister\nD) Your parents or grandparents", "3. Complete this well-known whakataukī (proverb): \"Ehara taku toa i te toa takitahi, engari he toa...\"\nA) ...he toa rawa atu.\nB) ...he toa ki te whenua.\nC) ...he toa takitini.\nD) ...he toa ki te tangata.", "4. What is the correct English translation for the kīwaha (idiom) \"Ka mau te wehi!\"?\nA) Be quiet!\nB) Sit down!\nC) That's fantastic! / Awesome!\nD) You are very brave.", "5. What is the correct English translation for the directional sentence \"I kake te tangata ki te tihi o te maunga\"?\nA) The man climbed to the peak of the mountain.\nB) The man walked around the base of the mountain.\nC) The man fell from the top of the mountain.\nD) The man was looking at the mountain." };
 
-            Console.WriteLine("################################\nWelcome To The Maori Quiz!\n");
-            Console.WriteLine("################################\nWhat's your name?");
+            Console.WriteLine("--------------------------------\nWelcome To The Maori Quiz!\n");
+            Console.WriteLine("--------------------------------\nWhat's your name?");
             string nameEntered = Console.ReadLine();
+
+
 
             bool isValid = nameEntered.All(c => char.IsLetter(c) || c == ' ');
 
@@ -23,27 +27,39 @@ namespace MaoriQuizqqeqe
             else
             {
                 Console.WriteLine("Your name has invalid characters!");
-                return;
+                Console.WriteLine("--------------------------------\nWhat's your name?");
+                nameEntered = Console.ReadLine();
             }
 
             bool nameLengthIsOver1 = nameEntered.Length < 2;
 
-            if (nameLengthIsOver1)
+            while (nameLengthIsOver1)
             {
                 Console.WriteLine("Your name has to be over 1 character long!");
-                return;
+                Console.WriteLine("--------------------------------\nWhat's your name?");
+                nameEntered = Console.ReadLine();
             }
 
             bool nameLengthIsUnder30 = nameEntered.Length > 30;
 
-            if (nameLengthIsUnder30)
+            while (nameLengthIsUnder30)
             {
                 Console.WriteLine("Your name has to be under 30 characters!");
-                return;
+                Console.WriteLine("#--------------------------------\nWhat's your name?");
+                nameEntered = Console.ReadLine();
             }
 
-            Console.WriteLine("\n################################\nWhat difficulty do you want to select?\n Easy(e) - Medium(m) - Hard(h)");
-            char diffucultySelector = Convert.ToChar(Console.ReadLine());
+            Console.WriteLine("--------------------------------\nWhat's your age?");
+            int ageEntered;
+            while(!int.TryParse(Console.ReadLine(), out ageEntered) || ageEntered < 10 || ageEntered > 100)
+            {
+                Console.WriteLine("Please enter a valid age!");
+            }
+
+
+                    Console.WriteLine("\n--------------------------------\nWhat difficulty do you want to select?\n Easy(e) - Medium(m) - Hard(h)");
+                    char diffucultySelector = Convert.ToChar(Console.ReadLine());
+                }
+            }
         }
-        }
-    }
+    
