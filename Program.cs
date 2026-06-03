@@ -45,21 +45,47 @@ namespace MaoriQuizqqeqe
             while (nameLengthIsUnder30)
             {
                 Console.WriteLine("Your name has to be under 30 characters!");
-                Console.WriteLine("#--------------------------------\nWhat's your name?");
+                Console.WriteLine("--------------------------------\nWhat's your name?");
                 nameEntered = Console.ReadLine();
             }
 
             Console.WriteLine("--------------------------------\nWhat's your age?");
             int ageEntered;
-            while(!int.TryParse(Console.ReadLine(), out ageEntered) || ageEntered < 10 || ageEntered > 100)
+            while (!int.TryParse(Console.ReadLine(), out ageEntered) || ageEntered < 0 || ageEntered > 100)
             {
                 Console.WriteLine("Please enter a valid age!");
             }
-
+            if (ageEntered < 10)
+            {
+                Console.WriteLine("You are under the age limit to play this quiz!");
+                Console.WriteLine("Did you mean to enter a different age? Y/N");
+                char choiceForAge = Convert.ToChar(Console.ReadLine());
+                if (choiceForAge == 'Y' || choiceForAge == 'y')
+                {
+                    Console.WriteLine("--------------------------------\nWhat's your age?");
+                    while (!int.TryParse(Console.ReadLine(), out ageEntered) || ageEntered < 0 || ageEntered > 100)
+                    {
+                        Console.WriteLine("Please enter a valid age!");
+                    }
+                    if (ageEntered >= 10)
+                    {
+                        Console.WriteLine($"Welcome to the quiz {nameEntered}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You are still under the age limit to play this quiz!");
+                        return;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input, Please enter Y/N");
+                    return;
+                }
 
                     Console.WriteLine("\n--------------------------------\nWhat difficulty do you want to select?\n Easy(e) - Medium(m) - Hard(h)");
                     char diffucultySelector = Convert.ToChar(Console.ReadLine());
                 }
             }
         }
-    
+    }
