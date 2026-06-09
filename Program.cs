@@ -109,6 +109,32 @@ namespace MaoriQuizqqeqe
                     Console.WriteLine("--------------------------------\nInvalid input. Please enter Y or N.");
                 }
 
+                Console.WriteLine("What difficulty would you like? (Easy(e), Medium(m), Hard(h))");
+                char choiceForDifficulty = Console.ReadKey().KeyChar;
+                if (choiceForDifficulty == 'e' || choiceForDifficulty == 'E')
+                {
+                    Console.WriteLine("\nYou have chosen Easy difficulty!");
+                    easyQuiz();
+                    // If the user chooses easy difficulty, it calls the easyQuiz method
+                }
+                else if (choiceForDifficulty == 'm' || choiceForDifficulty == 'M')
+                {
+                    Console.WriteLine("\nYou have chosen Medium difficulty!");
+                    mediumQuiz();
+                    // If the user chooses medium difficulty, it calls the mediumQuiz method
+                }
+                else if (choiceForDifficulty == 'h' || choiceForDifficulty == 'H')
+                {
+                    Console.WriteLine("\nYou have chosen Hard difficulty!");
+                    hardQuiz();
+                    // If the user chooses hard difficulty, it calls the hardQuiz method
+                }
+                else
+                {
+                    Console.WriteLine("\nInvalid input. Please enter E, M, or H.");
+                    // If the user inputs an invalid choice for difficulty, it shows an error message
+                }
+
             }
             static void easyQuiz()
             {
