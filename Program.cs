@@ -24,6 +24,7 @@ namespace MaoriQuizqqeqe
 
             // The Welcome message and asking for the user's name, then clearing the input for the name
 
+
             bool isValid = nameEntered.All(c => char.IsLetter(c) || c == ' ');
 
             if (isValid)
@@ -109,26 +110,23 @@ namespace MaoriQuizqqeqe
 
 
 
-            Console.WriteLine("--------------------------------\nWhat difficulty would you like? (Easy(e), Medium(m), Hard(h))");
+            Console.WriteLine("--------------------------------\nWhat difficulty would you like? (Easy(e), Medium(m), Hard(h)");
             string choiceForDifficulty = Console.ReadLine();
             choiceForDifficulty = choiceForDifficulty.Trim();
 
 
             if (choiceForDifficulty == "e" || choiceForDifficulty == "E")
             {
-                Console.WriteLine("--------------------------------\nYou have chosen Easy difficulty!");
                 easyQuiz();
                 // If the user chooses easy difficulty, it calls the easyQuiz method
             }
             else if (choiceForDifficulty == "m" || choiceForDifficulty == "M")
             {
-                Console.WriteLine("--------------------------------\nYou have chosen Medium difficulty!");
                 mediumQuiz();
                 // If the user chooses medium difficulty, it calls the mediumQuiz method
             }
             else if (choiceForDifficulty == "h" || choiceForDifficulty == "H")
             {
-                Console.WriteLine("--------------------------------\nYou have chosen Hard difficulty!");
                 hardQuiz();
                 // If the user chooses hard difficulty, it calls the hardQuiz method
             }
@@ -149,25 +147,36 @@ namespace MaoriQuizqqeqe
                 int userPoints = 0;
                 char[] easyAnswers = { 'A', 'B', 'C', 'B', 'C' };
 
-                for (int i = 0; i < 5; i++)
+            Console.WriteLine("--------------------------------\nYou have chosen Easy difficulty!");
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine($"--------------------------------\n{easyQuestions[i]}");
+                Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
+                string userAnswer = Console.ReadLine().ToUpper();
+
+                if (userAnswer != "A" && userAnswer != "B" && userAnswer != "C" && userAnswer != "D")
                 {
-                    Console.WriteLine($"--------------------------------\n{easyQuestions[i]}");
-                    Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
-                    string userAnswer = Console.ReadLine().ToUpper();
-                    if (userAnswer == easyAnswers[i].ToString())
-                    {
-                        Console.WriteLine("--------------------------------\nCorrect!");
-                        userPoints++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("--------------------------------\nIncorrect! The correct answer was " + easyAnswers[i]);
-                    }
+                    Console.WriteLine("--------------------------------\nInvalid input. Please enter A, B, C, or D.");
+                    i--;
+                    continue;
+                    // If the user inputs an invalid answer, it shows an error message and repeats the question
+                }
 
-
-                    // static void EasyQuiz() { String[] easyQuestions = { "1. What is the correct Māori word for \"water\"?\nA) Wai\nB) Kai\nC) Rā\nD) Ika", "2. If someone says \"Kia ora\", what is the best English translation?\nA) Good morning\nB) Hello / Cheers\nC) Goodbye\nD) Thank you", "3. What does the word \"Kai\" mean in Māori?\nA) To sleep\nB) To run\nC) Food\nD) Dog", "4. How do you say \"Goodbye\" to someone who is staying?\nA) Haere rā\nB) E noho rā\nC) Kia ora\nD) Mōrena", "5. Which of these numbers means \"Five\"?\nA) Tahi\nB) Waru\nC) Rima\nD) Tekau" }; String[] easyAnswers = { "A", "B", "C", "A", "C" }; int userscore = 0; for (int i = 0; i < 5; i++) {  Console.WriteLine(easyQuestions[i]);  Console.WriteLine("**********************************************");  Console.WriteLine("Enter your answer (A, B, C, or D): "); string useranswer = Console.ReadLine().ToUpper(); if (useranswer == easyAnswers[i]) {  Console.WriteLine("Correct!\n");  userscore++; } else {  Console.WriteLine("Incorrect! The answer was " + easyAnswers[i] + "\n"); } }  Console.WriteLine("Your final score is " + userscore + "/5"); }
+                if (userAnswer == easyAnswers[i].ToString())
+                {
+                    Console.WriteLine("--------------------------------\nCorrect!");
+                    userPoints++;
+                }
+                else
+                {
+                    Console.WriteLine("--------------------------------\nIncorrect! The correct answer was " + easyAnswers[i]);
                 }
             }
+            Console.WriteLine("--------------------------------\nYour final score is " + userPoints + "/5");
+
+        }
+            
 
             static void mediumQuiz()
             {
@@ -177,20 +186,23 @@ namespace MaoriQuizqqeqe
             int userPoints = 0;
             char[] mediumAnswers = { 'B', 'A', 'B', 'C', 'B' };
 
+            Console.WriteLine("--------------------------------\nYou have chosen Medium difficulty!");
+
             for (int i = 0; i < 5; i++)
                 {
-                    Console.WriteLine(mediumQuestions[i]);
-                Console.WriteLine("What is your answer? A, B, C, or D?");
-                string userAnswer = Console.ReadLine().ToUpper();
-                if (userAnswer == mediumAnswers[i].ToString())
-                {
-                    Console.WriteLine("Correct!");
+                    Console.WriteLine($"--------------------------------\n{mediumQuestions[i]}");
+                    Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
+                    string userAnswer = Console.ReadLine().ToUpper();
+                    if (userAnswer == mediumAnswers[i].ToString())
+                    {
+                        Console.WriteLine("--------------------------------\nCorrect!");
                     userPoints++;
                 }
                 else
                 {
-                    Console.WriteLine("Incorrect! The correct answer was " + mediumAnswers[i]);
+                    Console.WriteLine("--------------------------------\nIncorrect! The correct answer was " + mediumAnswers[i]);
                 }
+                Console.WriteLine("--------------------------------\nYour final score is " + userPoints + "/5");
             }
             }
 
@@ -199,11 +211,28 @@ namespace MaoriQuizqqeqe
                 String[] hardQuestions = { "1. Which of the following correctly translates to \"I have two, maybe four pairs of socks\"?\nA) E rua pea ōku tōkena, e whā rānei.\nB) E rua, e whā pea ōku tōkena.\nC) E rua pea aku tōkena, e toru pea.\nD) E whā pea ōku tōkena, e waru pea.", "2. In Māori grammar, possession is strictly categorized. Which of the following items requires an (O)-category possessive marker (e.g., ōku instead of āku)?\nA) Your food and drink\nB) Your clothes and shoes\nC) Your younger brother or sister\nD) Your parents or grandparents", "3. Complete this well-known whakataukī (proverb): \"Ehara taku toa i te toa takitahi, engari he toa...\"\nA) ...he toa rawa atu.\nB) ...he toa ki te whenua.\nC) ...he toa takitini.\nD) ...he toa ki te tangata.", "4. What is the correct English translation for the kīwaha (idiom) \"Ka mau te wehi!\"?\nA) Be quiet!\nB) Sit down!\nC) That's fantastic! / Awesome!\nD) You are very brave.", "5. What is the correct English translation for the directional sentence \"I kake te tangata ki te tihi o te maunga\"?\nA) The man climbed to the peak of the mountain.\nB) The man walked around the base of the mountain.\nC) The man fell from the top of the mountain.\nD) The man was looking at the mountain." };
                 // All hard questions and their choices
 
-                for (int i = 0; i < 5; i++)
+                int userPoints = 0;
+                char[] hardAnswers = { 'A', 'D', 'B', 'C', 'A' };
+
+            Console.WriteLine("--------------------------------\nYou have chosen Hard difficulty!");
+
+            for (int i = 0; i < 5; i++)
                 {
-                    Console.WriteLine(hardQuestions[i]);
+                    Console.WriteLine($"--------------------------------\n{hardQuestions[i]}");
+                    Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
+                    string userAnswer = Console.ReadLine().ToUpper();
+                    if (userAnswer == hardAnswers[i].ToString())
+                    {
+                        Console.WriteLine("--------------------------------\nCorrect!");
+                    userPoints++;
+                }
+                else
+                {
+                    Console.WriteLine("--------------------------------\nIncorrect! The correct answer was " + hardAnswers[i]);
                 }
             }
+            Console.WriteLine("--------------------------------\nYour final score is " + userPoints + "/5");
+        }
 
         }
     }
