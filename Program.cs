@@ -88,13 +88,14 @@ namespace MaoriQuizqqeqe
                     Console.WriteLine("--------------------------------\nPlease enter your correct age: ");
                     while (!int.TryParse(Console.ReadLine(), out ageEntered) || ageEntered < 10 || ageEntered > 100)
                     {
-                        Console.WriteLine("--------------------------------\nYour input for your age is invalid.");
+                        Console.WriteLine("--------------------------------\nYou are too young to play this quiz.");
+                        return;
                         Console.WriteLine("--------------------------------\nPlease enter a valid age: ");
                         // Checks if the new age input is valid and between 10 and 100
                     }
                     if (ageEntered >= 10)
                     {
-                        Console.WriteLine("--------------------------------\nWelcome to the Māori Quiz, {nameEntered}!");
+                        Console.WriteLine($"--------------------------------\nWelcome to the Māori Quiz, {nameEntered}!");
                         // Checks if the new age input is old enough to play the quiz
                     }
                     else
@@ -104,36 +105,40 @@ namespace MaoriQuizqqeqe
                         // If the new age input is still not old enough, it ends the program
                     }
                 }
-                else
-                {
-                    Console.WriteLine("--------------------------------\nInvalid input. Please enter Y or N.");
-                }
+            }
 
-                Console.WriteLine("What difficulty would you like? (Easy(e), Medium(m), Hard(h))");
-                char choiceForDifficulty = Console.ReadKey().KeyChar;
-                if (choiceForDifficulty == 'e' || choiceForDifficulty == 'E')
-                {
-                    Console.WriteLine("\nYou have chosen Easy difficulty!");
-                    easyQuiz();
-                    // If the user chooses easy difficulty, it calls the easyQuiz method
-                }
-                else if (choiceForDifficulty == 'm' || choiceForDifficulty == 'M')
-                {
-                    Console.WriteLine("\nYou have chosen Medium difficulty!");
-                    mediumQuiz();
-                    // If the user chooses medium difficulty, it calls the mediumQuiz method
-                }
-                else if (choiceForDifficulty == 'h' || choiceForDifficulty == 'H')
-                {
-                    Console.WriteLine("\nYou have chosen Hard difficulty!");
-                    hardQuiz();
-                    // If the user chooses hard difficulty, it calls the hardQuiz method
-                }
-                else
-                {
-                    Console.WriteLine("\nInvalid input. Please enter E, M, or H.");
-                    // If the user inputs an invalid choice for difficulty, it shows an error message
-                }
+
+
+            Console.WriteLine("--------------------------------\nWhat difficulty would you like? (Easy(e), Medium(m), Hard(h))");
+            string choiceForDifficulty = Console.ReadLine();
+            choiceForDifficulty = choiceForDifficulty.Trim();
+
+
+            if (choiceForDifficulty == "e" || choiceForDifficulty == "E")
+            {
+                Console.WriteLine("--------------------------------\nYou have chosen Easy difficulty!");
+                easyQuiz();
+                // If the user chooses easy difficulty, it calls the easyQuiz method
+            }
+            else if (choiceForDifficulty == "m" || choiceForDifficulty == "M")
+            {
+                Console.WriteLine("--------------------------------\nYou have chosen Medium difficulty!");
+                mediumQuiz();
+                // If the user chooses medium difficulty, it calls the mediumQuiz method
+            }
+            else if (choiceForDifficulty == "h" || choiceForDifficulty == "H")
+            {
+                Console.WriteLine("--------------------------------\nYou have chosen Hard difficulty!");
+                hardQuiz();
+                // If the user chooses hard difficulty, it calls the hardQuiz method
+            }
+            else
+            {
+                Console.WriteLine("--------------------------------\nInvalid input. Please enter E, M, or H.");
+                // If the user inputs an invalid choice for difficulty, it shows an error message
+            }
+            while (choiceForDifficulty != "e" && choiceForDifficulty != "E" && choiceForDifficulty != "m" && choiceForDifficulty != "M" && choiceForDifficulty != "h" && choiceForDifficulty != "H") ;
+
 
             }
             static void easyQuiz()
@@ -146,17 +151,17 @@ namespace MaoriQuizqqeqe
 
                 for (int i = 0; i < 5; i++)
                 {
-                    Console.WriteLine(easyQuestions[i]);
-                    Console.WriteLine("What is your answer? A, B, C, or D?");
+                    Console.WriteLine($"--------------------------------\n{easyQuestions[i]}");
+                    Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
                     string userAnswer = Console.ReadLine().ToUpper();
-                    if (userAnswer == easyAnswers[i])
+                    if (userAnswer == easyAnswers[i].ToString())
                     {
-                        Console.WriteLine("Correct!");
+                        Console.WriteLine("--------------------------------\nCorrect!");
                         userPoints++;
                     }
                     else
                     {
-                        Console.WriteLine("Incorrect! The correct answer was " + easyAnswers[i]);
+                        Console.WriteLine("--------------------------------\nIncorrect! The correct answer was " + easyAnswers[i]);
                     }
 
 
@@ -167,12 +172,26 @@ namespace MaoriQuizqqeqe
             static void mediumQuiz()
             {
                 String[] mediumQuestions = { "1. What is the English translation for the Māori word \"tupuna\"?\nA) Child\nB) Ancestor\nC) Friend\nD) Teacher", "2. Complete the sentence with the correct possessive pronoun: \"Kei hea ___ pene?\" (Where is your pen?)\nA) tāu\nB) tō\nC) tū\nD) tā", "3. Which of the following kupu (words) represents the direction \"north\" in Māori?\nA) Tonga\nB) Rāwhiti\nC) Te Raki\nD) Ururangi", "4. If someone says, \"Kei te hiakai au,\" how are they feeling?\nA) Tired\nB) Thirsty\nC) Hungry\nD) Happy", "5. What is the correct translation for \"Thank you\" when speaking to one person?\nA) Kia ora\nB) Tēnā koe\nC) Haere rā\nD) Ngā mihi" };
-                // All medium questions and their choices
+            // All medium questions and their choices
 
-                for (int i = 0; i < 5; i++)
+            int userPoints = 0;
+            char[] mediumAnswers = { 'B', 'A', 'B', 'C', 'B' };
+
+            for (int i = 0; i < 5; i++)
                 {
                     Console.WriteLine(mediumQuestions[i]);
+                Console.WriteLine("What is your answer? A, B, C, or D?");
+                string userAnswer = Console.ReadLine().ToUpper();
+                if (userAnswer == mediumAnswers[i].ToString())
+                {
+                    Console.WriteLine("Correct!");
+                    userPoints++;
                 }
+                else
+                {
+                    Console.WriteLine("Incorrect! The correct answer was " + mediumAnswers[i]);
+                }
+            }
             }
 
             static void hardQuiz()
@@ -188,4 +207,4 @@ namespace MaoriQuizqqeqe
 
         }
     }
-}
+
