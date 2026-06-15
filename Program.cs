@@ -30,45 +30,70 @@ namespace MaoriQuizqqeqe
                 nameEntered = Console.ReadLine();
                 // Checks if the name is empty or just spaces
             }
-        
 
-        bool isValid = nameEntered.All(c => char.IsLetter(c) || c == ' ');
 
-            if (isValid)
+            while (nameEntered.All(c => char.IsLetter(c) || c == ' '))
             {
                 Console.WriteLine($"--------------------------------\nHello, {nameEntered}");
             }
-            else
+            while (!nameEntered.All(c => char.IsLetter(c) || c == ' '))
             {
                 Console.WriteLine("--------------------------------\nYour name has invalid characters! Please enter your name:");
                 nameEntered = Console.ReadLine();
                 // Checks if the name as only letters and spaces
             }
-
-            bool nameLengthIsOver1 = nameEntered.Length < 2;
-
-            while (nameLengthIsOver1)
+            while (nameEntered.Length < 2)
             {
                 Console.WriteLine("--------------------------------\nYour name has to be over 1 character long! Please enter your name:");
                 nameEntered = Console.ReadLine();
-                // Checks if the character is over 1 letter long
+                continue;
             }
-
-            bool nameLengthIsUnder30 = nameEntered.Length > 30;
-
-            while (nameLengthIsUnder30)
+            if (nameEntered.Length > 30)
             {
                 Console.WriteLine("--------------------------------\nYour name has to be under 30 characters! Please enter your name:");
                 nameEntered = Console.ReadLine();
                 // Checks if the character is under 30 letters long
             }
+            Console.WriteLine($"--------------------------------\nHello, {nameEntered}");
 
+            /*
+                    bool isValid = nameEntered.All(c => char.IsLetter(c) || c == ' ');
+
+                        if (isValid)
+                        {
+                            Console.WriteLine($"--------------------------------\nHello, {nameEntered}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("--------------------------------\nYour name has invalid characters! Please enter your name:");
+                            nameEntered = Console.ReadLine();
+                            // Checks if the name as only letters and spaces
+                        }
+
+                        bool nameLengthIsOver1 = nameEntered.Length < 2;
+
+                        while (nameLengthIsOver1)
+                        {
+                            Console.WriteLine("--------------------------------\nYour name has to be over 1 character long! Please enter your name:");
+                            nameEntered = Console.ReadLine();
+                            // Checks if the character is over 1 letter long
+                        }
+
+                        bool nameLengthIsUnder30 = nameEntered.Length > 30;
+
+                        while (nameLengthIsUnder30)
+                        {
+                            Console.WriteLine("--------------------------------\nYour name has to be under 30 characters! Please enter your name:");
+                            nameEntered = Console.ReadLine();
+                            // Checks if the character is under 30 letters long
+                        }
+            */
             Console.WriteLine("--------------------------------\nPlease enter your age:");
             int ageEntered;
-            while (!int.TryParse(Console.ReadLine(), out ageEntered) || ageEntered < 10 || ageEntered > 100)
+            while (!int.TryParse(Console.ReadLine(), out ageEntered) || ageEntered < 0 || ageEntered > 100)
             {
-                Console.WriteLine("--------------------------------\nYour age has invalid characters! Please enter your age between (10 to 100):");
-                // Checks if the age is a valid number and between 10 and 100
+                Console.WriteLine("--------------------------------\nYour age has invalid characters! Please enter your age:");
+                // Checks if the age is a valid number and between 0 and 100
             }
 
             if (ageEntered >= 10)
