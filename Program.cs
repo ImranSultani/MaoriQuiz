@@ -283,6 +283,15 @@ namespace MaoriQuizqqeqe
                 Console.WriteLine($"--------------------------------\n{mediumQuestions[i]}");
                 Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
                 string userAnswer = Console.ReadLine().ToUpper();
+
+                if (userAnswer != "A" && userAnswer != "B" && userAnswer != "C" && userAnswer != "D")
+                {
+                    Console.WriteLine("--------------------------------\nInvalid input. Please enter A, B, C, or D.");
+                    i--;
+                    continue;
+                    // If the user inputs an invalid answer, it shows an error message and repeats the question
+                }
+
                 if (userAnswer == mediumAnswers[i].ToString())
                 {
                     Console.WriteLine("--------------------------------\nCorrect!");
@@ -311,6 +320,15 @@ namespace MaoriQuizqqeqe
                 Console.WriteLine($"--------------------------------\n{hardQuestions[i]}");
                 Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
                 string userAnswer = Console.ReadLine().ToUpper();
+
+                if (userAnswer != "A" && userAnswer != "B" && userAnswer != "C" && userAnswer != "D")
+                {
+                    Console.WriteLine("--------------------------------\nInvalid input. Please enter A, B, C, or D.");
+                    i--;
+                    continue;
+                    // If the user inputs an invalid answer, it shows an error message and repeats the question
+                }
+
                 if (userAnswer == hardAnswers[i].ToString())
                 {
                     Console.WriteLine("--------------------------------\nCorrect!");
