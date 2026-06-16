@@ -1,3 +1,4 @@
+using System.ComponentModel.Design;
 using System.Numerics;
 
 namespace MaoriQuizqqeqe
@@ -24,37 +25,63 @@ namespace MaoriQuizqqeqe
 
             // The Welcome message and asking for the user's name, then clearing the input for the name
 
-            while (string.IsNullOrWhiteSpace(nameEntered))
+            do
             {
-                Console.WriteLine("--------------------------------\nYour name cannot be empty! Please enter your name:");
-                nameEntered = Console.ReadLine();
-                // Checks if the name is empty or just spaces
-            }
+                if (string.IsNullOrWhiteSpace(nameEntered))
+                {
+                    Console.WriteLine("--------------------------------\nYour name cannot be empty! Please enter your name:");
+                    nameEntered = Console.ReadLine();
+                    // Checks if the name is empty or just spaces
+                }
+                if (!nameEntered.All(c => char.IsLetter(c) || c == ' '))
+                {
+                    Console.WriteLine("--------------------------------\nYour name has invalid characters! Please enter your name:");
+                    nameEntered = Console.ReadLine();
+                    // Checks if the name as only letters and spaces
+                }
+                if (nameEntered.Length < 2 || nameEntered.Length > 30)
+                {
+                    Console.WriteLine("--------------------------------\nYour name has to be in the (2-30) character range! Please enter your name:");
+                    nameEntered = Console.ReadLine();
+                    // Checks if the character is over 1 letter long
 
 
-            while (nameEntered.All(c => char.IsLetter(c) || c == ' '))
+                }
+            } while ((string.IsNullOrWhiteSpace(nameEntered)) || !(nameEntered.All(c => char.IsLetter(c) || c == ' ')) || nameEntered.Length < 2 || nameEntered.Length > 30);
+
+            nameEntered = nameEntered.Substring(0, 1).ToUpper() + nameEntered.Substring(1).ToLower();
+            if ((nameEntered.All(c => char.IsLetter(c) || c == ' ')))
             {
                 Console.WriteLine($"--------------------------------\nHello, {nameEntered}");
             }
-            while (!nameEntered.All(c => char.IsLetter(c) || c == ' '))
-            {
-                Console.WriteLine("--------------------------------\nYour name has invalid characters! Please enter your name:");
-                nameEntered = Console.ReadLine();
-                // Checks if the name as only letters and spaces
-            }
-            while (nameEntered.Length < 2)
-            {
-                Console.WriteLine("--------------------------------\nYour name has to be over 1 character long! Please enter your name:");
-                nameEntered = Console.ReadLine();
-                continue;
-            }
-            if (nameEntered.Length > 30)
-            {
-                Console.WriteLine("--------------------------------\nYour name has to be under 30 characters! Please enter your name:");
-                nameEntered = Console.ReadLine();
-                // Checks if the character is under 30 letters long
-            }
-            Console.WriteLine($"--------------------------------\nHello, {nameEntered}");
+
+
+            /* while (string.IsNullOrWhiteSpace(nameEntered))
+             {
+                 Console.WriteLine("--------------------------------\nYour name cannot be empty! Please enter your name:");
+                 nameEntered = Console.ReadLine();
+                 // Checks if the name is empty or just spaces
+             }
+             while ((nameEntered.All(c => char.IsLetter(c) || c == ' ')))
+             {
+                 Console.WriteLine($"--------------------------------\nHello, {nameEntered}");
+             }
+             while (!nameEntered.All(c => char.IsLetter(c) || c == ' '))
+             {
+                 Console.WriteLine("--------------------------------\nYour name has invalid characters! Please enter your name:");
+                 nameEntered = Console.ReadLine();
+                 // Checks if the name as only letters and spaces
+             }
+             while (nameEntered.Length < 2 || nameEntered.Length > 30)
+             {
+                     Console.WriteLine("--------------------------------\nYour name has to be in the (2-30) character range! Please enter your name:");
+                     nameEntered = Console.ReadLine();
+                     // Checks if the character is over 1 letter long
+
+
+             }
+          */
+
 
             /*
                     bool isValid = nameEntered.All(c => char.IsLetter(c) || c == ' ');
@@ -96,7 +123,7 @@ namespace MaoriQuizqqeqe
                 // Checks if the age is a valid number and between 0 and 100
             }
 
-            if (ageEntered >= 10)
+            if (ageEntered >= 10 && ageEntered <= 100)
             {
                 Console.WriteLine("--------------------------------\nWelcome to the Māori Quiz!");
                 // Checks if the user is old enough to play the quiz
@@ -170,21 +197,34 @@ namespace MaoriQuizqqeqe
                     if (choiceForDifficulty == "e" || choiceForDifficulty == "E")
                     {
                         easyQuiz();
-                        break;
                     }
                     else if (choiceForDifficulty == "m" || choiceForDifficulty == "M")
                     {
                         mediumQuiz();
-                        break;
                     }
                     else if (choiceForDifficulty == "h" || choiceForDifficulty == "H")
                     {
                         hardQuiz();
-                        break;
                     }
                 }
                 // If the user inputs an invalid choice for difficulty, it shows an error message
             }
+            Console.WriteLine("Would you like to retry the quiz? Y / N");
+            string retryChoice = Console.ReadLine();
+            char retryChoiceChar = Convert.ToChar(retryChoice);
+            retryChoiceChar = retryChoice.Trim()[0];
+            if (retryChoiceChar == 'Y' || retryChoiceChar == 'y')
+            {
+                Main(args);
+                // If the user chooses to retry, it restarts the quiz
+            }
+            else if (retryChoiceChar == 'N' || retryChoiceChar == 'n')
+            {
+                Console.WriteLine("--------------------------------\nThank you for playing the Māori Quiz! Goodbye!");
+                return;
+                // If the user chooses not to retry, it ends the program
+            }
+
 
 
         }
@@ -214,6 +254,7 @@ namespace MaoriQuizqqeqe
 
                 if (userAnswer == easyAnswers[i].ToString())
                 {
+
                     Console.WriteLine("--------------------------------\nCorrect!");
                     userPoints++;
                 }
