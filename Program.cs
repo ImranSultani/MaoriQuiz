@@ -15,7 +15,7 @@ namespace MaoriQuizqqeqe
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("--------------------------------\nWelcome To The Maori Quiz!");
             Console.ResetColor();
-            Console.WriteLine("--------------------------------\nPlease enter your name:");
+            Console.WriteLine("--------------------------------\n ");
             int leftPos = Console.CursorLeft;
             int topPos = Console.CursorTop;
             string nameEntered = Console.ReadLine();
@@ -54,67 +54,9 @@ namespace MaoriQuizqqeqe
             {
                 Console.WriteLine($"--------------------------------\nHello, {nameEntered}");
             }
+            
+            
 
-
-            /* while (string.IsNullOrWhiteSpace(nameEntered))
-             {
-                 Console.WriteLine("--------------------------------\nYour name cannot be empty! Please enter your name:");
-                 nameEntered = Console.ReadLine();
-                 // Checks if the name is empty or just spaces
-             }
-             while ((nameEntered.All(c => char.IsLetter(c) || c == ' ')))
-             {
-                 Console.WriteLine($"--------------------------------\nHello, {nameEntered}");
-             }
-             while (!nameEntered.All(c => char.IsLetter(c) || c == ' '))
-             {
-                 Console.WriteLine("--------------------------------\nYour name has invalid characters! Please enter your name:");
-                 nameEntered = Console.ReadLine();
-                 // Checks if the name as only letters and spaces
-             }
-             while (nameEntered.Length < 2 || nameEntered.Length > 30)
-             {
-                     Console.WriteLine("--------------------------------\nYour name has to be in the (2-30) character range! Please enter your name:");
-                     nameEntered = Console.ReadLine();
-                     // Checks if the character is over 1 letter long
-
-
-             }
-          */
-
-
-            /*
-                    bool isValid = nameEntered.All(c => char.IsLetter(c) || c == ' ');
-
-                        if (isValid)
-                        {
-                            Console.WriteLine($"--------------------------------\nHello, {nameEntered}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("--------------------------------\nYour name has invalid characters! Please enter your name:");
-                            nameEntered = Console.ReadLine();
-                            // Checks if the name as only letters and spaces
-                        }
-
-                        bool nameLengthIsOver1 = nameEntered.Length < 2;
-
-                        while (nameLengthIsOver1)
-                        {
-                            Console.WriteLine("--------------------------------\nYour name has to be over 1 character long! Please enter your name:");
-                            nameEntered = Console.ReadLine();
-                            // Checks if the character is over 1 letter long
-                        }
-
-                        bool nameLengthIsUnder30 = nameEntered.Length > 30;
-
-                        while (nameLengthIsUnder30)
-                        {
-                            Console.WriteLine("--------------------------------\nYour name has to be under 30 characters! Please enter your name:");
-                            nameEntered = Console.ReadLine();
-                            // Checks if the character is under 30 letters long
-                        }
-            */
             Console.WriteLine("--------------------------------\nPlease enter your age:");
             int ageEntered;
             while (!int.TryParse(Console.ReadLine(), out ageEntered) || ageEntered < 0 || ageEntered > 100)
