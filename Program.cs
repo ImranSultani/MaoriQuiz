@@ -1,5 +1,6 @@
 using System.ComponentModel.Design;
 using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
 
 namespace MaoriQuizqqeqe
 {
@@ -14,8 +15,8 @@ namespace MaoriQuizqqeqe
 
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("--------------------------------\nWelcome To The Maori Quiz!");
+            Console.WriteLine("--------------------------------\nPlease enter your name:");
             Console.ResetColor();
-            Console.WriteLine("--------------------------------\n ");
             int leftPos = Console.CursorLeft;
             int topPos = Console.CursorTop;
             string nameEntered = Console.ReadLine();
@@ -54,8 +55,8 @@ namespace MaoriQuizqqeqe
             {
                 Console.WriteLine($"--------------------------------\nHello, {nameEntered}");
             }
-            
-            
+
+
 
             Console.WriteLine("--------------------------------\nPlease enter your age:");
             int ageEntered;
@@ -73,16 +74,16 @@ namespace MaoriQuizqqeqe
             else
             {
                 Console.WriteLine("--------------------------------\nAre you sure that this is your correct age? Y / N");
-                string ageConfirmation = Console.ReadLine();
-                char ageConfirmationChar = Convert.ToChar(ageConfirmation);
-                ageConfirmationChar = ageConfirmation.Trim()[0];
-                if (ageConfirmationChar == 'Y' || ageConfirmationChar == 'y')
+                string ageConfirm = Console.ReadLine();
+                char ageConfirmChar = Convert.ToChar(ageConfirm);
+                ageConfirmChar = ageConfirm.Trim()[0];
+                if (ageConfirmChar == 'Y' || ageConfirmChar == 'y')
                 {
                     Console.WriteLine("--------------------------------\nYou must be at least 13 years old to participate in the Māori Quiz.");
                     return;
                     // Checks if the user confirms their age and if they are not old enough, it ends the program
                 }
-                else if (ageConfirmationChar == 'N' || ageConfirmationChar == 'n')
+                else if (ageConfirmChar == 'N' || ageConfirmChar == 'n')
                 {
                     Console.WriteLine("--------------------------------\nPlease enter your correct age: ");
                     while (!int.TryParse(Console.ReadLine(), out ageEntered) || ageEntered < 10 || ageEntered > 100)
@@ -105,9 +106,6 @@ namespace MaoriQuizqqeqe
                     }
                 }
             }
-
-
-
             Console.WriteLine("--------------------------------\nWhat difficulty would you like? (Easy(e), Medium(m), Hard(h)");
             string choiceForDifficulty = Console.ReadLine();
             choiceForDifficulty = choiceForDifficulty.Trim();
@@ -151,26 +149,38 @@ namespace MaoriQuizqqeqe
                 }
                 // If the user inputs an invalid choice for difficulty, it shows an error message
             }
-            Console.WriteLine("Would you like to retry the quiz? Y / N");
+
+            Console.WriteLine("Would you like to retry the quiz? YES / NO");
             string retryChoice = Console.ReadLine();
-            char retryChoiceChar = Convert.ToChar(retryChoice);
-            retryChoiceChar = retryChoice.Trim()[0];
-            if (retryChoiceChar == 'Y' || retryChoiceChar == 'y')
+
+            do
             {
-                Main(args);
-                // If the user chooses to retry, it restarts the quiz
-            }
-            else if (retryChoiceChar == 'N' || retryChoiceChar == 'n')
-            {
-                Console.WriteLine("--------------------------------\nThank you for playing the Māori Quiz! Goodbye!");
-                return;
-                // If the user chooses not to retry, it ends the program
-            }
-
-
-
+                if (string.IsNullOrWhiteSpace(retryChoice))
+                {
+                    Console.WriteLine("--------------------------------\nYour choice cannot be empty. Please enter YES or NO.");
+                    retryChoice = Console.ReadLine();
+                    // If the user inputs an empty value for retrying, it shows an error message
+                }
+                else if (retryChoice != "YES" && retryChoice != "yes" && retryChoice != "NO" && retryChoice != "no")
+                {
+                    Console.WriteLine("--------------------------------\nYour input is invalid, Please enter YES or NO.");
+                    retryChoice = Console.ReadLine();
+                    // If the user inputs an empty value for retrying, it shows an error message
+                }
+                else if (!(retryChoice.All(c => char.IsLetter(c) || c == ' ')))
+                {
+                    Console.WriteLine("--------------------------------\nYour input is invalid, Please enter YES or NO.");
+                    retryChoice = Console.ReadLine();
+                    // If the user inputs an empty value for retrying, it shows an error message
+                }
+            } while (retryChoice.All(c => char.IsLetter(c) || c == ' ') || retryChoice == "YES" || retryChoice == "yes" || retryChoice == "NO" || retryChoice == "no");
         }
-        static void easyQuiz()
+
+
+
+
+            
+            static void easyQuiz()
         {
             String[] easyQuestions = { "1. What is the correct Māori word for \"water\"?\nA) Wai\nB) Kai\nC) Rā\nD) Ika", "2. If someone says \"Kia ora\", what is the best English translation?\nA) Good morning\nB) Hello / Cheers\nC) Goodbye\nD) Thank you", "3. What does the word \"Kai\" mean in Māori?\nA) To sleep\nB) To run\nC) Food\nD) Dog", "4. How do you say \"Goodbye\" to someone who is staying (when you are the one leaving)?\nA) Haere rā\nB) E noho rā\nC) Kia ora\nD) Mōrena", "5. Which of these numbers means \"Five\"?\nA) Tahi\nB) Waru\nC) Rima\nD) Tekau" };
             // All easy questions and their choices
@@ -285,6 +295,7 @@ namespace MaoriQuizqqeqe
         }
     }
 }
+
 
 
 
