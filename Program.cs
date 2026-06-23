@@ -73,7 +73,7 @@ namespace MaoriQuizqqeqe
                 ageConfirmChar = ageConfirm.Trim()[0];
                 if (ageConfirmChar == 'Y' || ageConfirmChar == 'y')
                 {
-                    Console.WriteLine("--------------------------------\nYou must be at least 13 years old to participate in the Māori Quiz.");
+                    Console.WriteLine("--------------------------------\nYou must be at least 10 years old to participate in the Māori Quiz.");
                     return;
                     // Checks if the user confirms their age and if they are not old enough, it ends the program
                 }
