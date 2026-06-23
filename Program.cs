@@ -13,16 +13,10 @@ namespace MaoriQuizqqeqe
         {
 
 
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("--------------------------------\nWelcome To The Maori Quiz!");
             Console.WriteLine("--------------------------------\nPlease enter your name:");
             Console.ResetColor();
-            int leftPos = Console.CursorLeft;
-            int topPos = Console.CursorTop;
             string nameEntered = Console.ReadLine();
-            Console.SetCursorPosition(leftPos, topPos);
-            Console.Write(new string(' ', nameEntered.Length));
-            Console.SetCursorPosition(leftPos, topPos);
 
             // The Welcome message and asking for the user's name, then clearing the input for the name
 
@@ -128,53 +122,36 @@ namespace MaoriQuizqqeqe
             }
             else
             {
-                while (true)
+                while (string.IsNullOrWhiteSpace(choiceForDifficulty) || (choiceForDifficulty != "e" && choiceForDifficulty != "E" && choiceForDifficulty != "m" && choiceForDifficulty != "M" && choiceForDifficulty != "h" && choiceForDifficulty != "H"))
                 {
                     Console.WriteLine("--------------------------------\nInvalid input. Please enter E, M, or H.");
                     choiceForDifficulty = Console.ReadLine();
                     choiceForDifficulty = choiceForDifficulty.Trim();
-
-                    if (choiceForDifficulty == "e" || choiceForDifficulty == "E")
-                    {
-                        easyQuiz();
-                    }
-                    else if (choiceForDifficulty == "m" || choiceForDifficulty == "M")
-                    {
-                        mediumQuiz();
-                    }
-                    else if (choiceForDifficulty == "h" || choiceForDifficulty == "H")
-                    {
-                        hardQuiz();
-                    }
                 }
-                // If the user inputs an invalid choice for difficulty, it shows an error message
+                if (choiceForDifficulty == "e" || choiceForDifficulty == "E")
+                {
+                    easyQuiz();
+                }
+                else if (choiceForDifficulty == "m" || choiceForDifficulty == "M")
+                {
+                    mediumQuiz();
+                }
+                else if (choiceForDifficulty == "h" || choiceForDifficulty == "H")
+                {
+                    hardQuiz();
+                }
             }
 
-            Console.WriteLine("Would you like to retry the quiz? YES / NO");
-            string retryChoice = Console.ReadLine();
+                Console.WriteLine("Would you like to retry the quiz? YES / NO");
+                string retryChoice = Console.ReadLine().Trim().ToUpper();
 
-            do
-            {
-                if (string.IsNullOrWhiteSpace(retryChoice))
+                while (string.IsNullOrWhiteSpace(retryChoice) || (retryChoice != "YES" && retryChoice != "NO"))
                 {
                     Console.WriteLine("--------------------------------\nYour choice cannot be empty. Please enter YES or NO.");
-                    retryChoice = Console.ReadLine();
+                    retryChoice = Console.ReadLine().Trim().ToUpper();
                     // If the user inputs an empty value for retrying, it shows an error message
                 }
-                else if (retryChoice != "YES" && retryChoice != "yes" && retryChoice != "NO" && retryChoice != "no")
-                {
-                    Console.WriteLine("--------------------------------\nYour input is invalid, Please enter YES or NO.");
-                    retryChoice = Console.ReadLine();
-                    // If the user inputs an empty value for retrying, it shows an error message
-                }
-                else if (!(retryChoice.All(c => char.IsLetter(c) || c == ' ')))
-                {
-                    Console.WriteLine("--------------------------------\nYour input is invalid, Please enter YES or NO.");
-                    retryChoice = Console.ReadLine();
-                    // If the user inputs an empty value for retrying, it shows an error message
-                }
-            } while (retryChoice.All(c => char.IsLetter(c) || c == ' ') || retryChoice == "YES" || retryChoice == "yes" || retryChoice == "NO" || retryChoice == "no");
-        }
+            } while (retryChoice == "Yes" || retryChoice == "YES" || retryChoice == "yes");})
 
 
 
