@@ -34,7 +34,7 @@ namespace MaoriQuizqqeqe
                     nameEntered = Console.ReadLine();
                     // Checks if the name as only letters and spaces
                 }
-                if (nameEntered.Length < 2 || nameEntered.Length > 30)
+                else if (nameEntered.Length < 2 || nameEntered.Length > 30)
                 {
                     Console.WriteLine("--------------------------------\nYour name has to be in the (2-30) character range! Please enter your name:");
                     nameEntered = Console.ReadLine();
