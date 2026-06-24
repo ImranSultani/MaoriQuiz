@@ -54,10 +54,18 @@ namespace MaoriQuizqqeqe
 
             Console.WriteLine("--------------------------------\nPlease enter your age:");
             int ageEntered;
-            while (!int.TryParse(Console.ReadLine(), out ageEntered) || ageEntered < 0 || ageEntered > 100)
+            string ageInput = Console.ReadLine();
+            while (!int.TryParse(ageInput, out ageEntered) || ageEntered < 0 || ageEntered > 100)
             {
-                Console.WriteLine("--------------------------------\nYour age has invalid characters! Or It is not in the 0 - 100 range! Please enter your age:");
-                // Checks if the age is a valid number and between 0 and 100
+                if (!int.TryParse(ageInput, out ageEntered))
+                {
+                    Console.WriteLine("--------------------------------\nYour age has invalid characters! Please enter your age:");
+                }
+                else
+                {
+                    Console.WriteLine("--------------------------------\nYour age is not in the 0 - 100 range! Please enter your age:");
+                }
+                ageInput = Console.ReadLine();
             }
 
             if (ageEntered >= 10 && ageEntered <= 100)
