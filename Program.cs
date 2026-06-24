@@ -113,7 +113,7 @@ namespace MaoriQuizqqeqe
 
             do
             {
-                Console.WriteLine("--------------------------------\nWhat difficulty would you like? (Easy(e), Medium(m), Hard(h)");
+                Console.WriteLine("--------------------------------\nWhat difficulty would you like? Easy(e), Medium(m), Hard(h)");
                 string choiceForDifficulty = Console.ReadLine();
                 choiceForDifficulty = choiceForDifficulty.Trim();
 
@@ -163,6 +163,17 @@ namespace MaoriQuizqqeqe
                     Console.WriteLine("--------------------------------\nYour choice cannot be empty. Please enter YES or NO.");
                     retryChoice = Console.ReadLine().Trim().ToUpper();
                     // If the user inputs an empty value for retrying, it shows an error message
+                }
+                else
+                {
+                    if (retryChoice == "YES")
+                    {
+                        Console.WriteLine("--------------------------------\nRestarting the quiz...");
+                    }
+                    else if (retryChoice == "NO")
+                    {
+                        Console.WriteLine("--------------------------------\nThank you for playing the Māori Quiz! Goodbye!");
+                    }
                 }
             } while (retryChoice == "YES");
 
