@@ -28,7 +28,7 @@ namespace MaoriQuizqqeqe
                     nameEntered = Console.ReadLine();
                     // Checks if the name is empty or just spaces
                 }
-                if (!nameEntered.All(c => char.IsLetter(c) || c == ' '))
+                if (!nameEntered.All(c => char.IsLetter(c) || c.Equals(' ')))
                 {
                     Console.WriteLine("--------------------------------\nYour name has invalid characters! Please enter your name:");
                     nameEntered = Console.ReadLine();
@@ -42,10 +42,10 @@ namespace MaoriQuizqqeqe
 
 
                 }
-            } while ((string.IsNullOrWhiteSpace(nameEntered)) || !(nameEntered.All(c => char.IsLetter(c) || c == ' ')) || nameEntered.Length < 2 || nameEntered.Length > 30);
+            } while ((string.IsNullOrWhiteSpace(nameEntered)) || !(nameEntered.All(c => char.IsLetter(c) || c.Equals(' '))) || nameEntered.Length < 2 || nameEntered.Length > 30);
 
             nameEntered = nameEntered.Substring(0, 1).ToUpper() + nameEntered.Substring(1).ToLower();
-            if ((nameEntered.All(c => char.IsLetter(c) || c == ' ')))
+            if ((nameEntered.All(c => char.IsLetter(c) || c.Equals(' '))))
             {
                 Console.WriteLine($"--------------------------------\nHello, {nameEntered}");
             }
@@ -90,12 +90,12 @@ namespace MaoriQuizqqeqe
                     }
                     ageConfirm = Console.ReadLine().Trim();
                 }
-                if (ageConfirm == "Y" || ageConfirm == "y")
+                if (ageConfirm.Equals("Y") || ageConfirm.Equals("y"))
                 {
                     Console.WriteLine("--------------------------------\nYou must be at least 10 years old to participate in the Māori Quiz.");
                     return;
                 }
-                else if (ageConfirm == "N" || ageConfirm == "n")
+                else if (ageConfirm.Equals("N") || ageConfirm.Equals("n"))
                 {
                     Console.WriteLine("--------------------------------\nPlease enter your correct age: ");
                     while (!int.TryParse(Console.ReadLine(), out ageEntered) || ageEntered < 10 || ageEntered > 100)
@@ -124,17 +124,17 @@ namespace MaoriQuizqqeqe
                 choiceForDifficulty = choiceForDifficulty.Trim();
 
 
-                if (choiceForDifficulty == "e" || choiceForDifficulty == "E")
+                if (choiceForDifficulty.Equals("e") || choiceForDifficulty.Equals("E"))
                 {
                     easyQuiz();
                     // If the user chooses easy difficulty, it calls the easyQuiz method
                 }
-                else if (choiceForDifficulty == "m" || choiceForDifficulty == "M")
+                else if (choiceForDifficulty.Equals("m") || choiceForDifficulty.Equals("M"))
                 {
                     mediumQuiz();
                     // If the user chooses medium difficulty, it calls the mediumQuiz method
                 }
-                else if (choiceForDifficulty == "h" || choiceForDifficulty == "H")
+                else if (choiceForDifficulty.Equals("h") || choiceForDifficulty.Equals("H"))
                 {
                     hardQuiz();
                     // If the user chooses hard difficulty, it calls the hardQuiz method
@@ -147,15 +147,15 @@ namespace MaoriQuizqqeqe
                         choiceForDifficulty = Console.ReadLine();
                         choiceForDifficulty = choiceForDifficulty.Trim();
                     }
-                    if (choiceForDifficulty == "e" || choiceForDifficulty == "E")
+                    if (choiceForDifficulty .Equals("e") || choiceForDifficulty .Equals("E"))
                     {
                         easyQuiz();
                     }
-                    else if (choiceForDifficulty == "m" || choiceForDifficulty == "M")
+                    else if (choiceForDifficulty .Equals("m") || choiceForDifficulty .Equals("M"))
                     {
                         mediumQuiz();
                     }
-                    else if (choiceForDifficulty == "h" || choiceForDifficulty == "H")
+                    else if (choiceForDifficulty .Equals("h") || choiceForDifficulty .Equals("H"))
                     {
                         hardQuiz();
                     }
@@ -177,16 +177,16 @@ namespace MaoriQuizqqeqe
                     retryChoice = Console.ReadLine().Trim().ToUpper();
                 }
 
-                if (retryChoice == "YES")
+                if (retryChoice .Equals("YES"))
                 {
                     Console.WriteLine("--------------------------------\nRestarting the quiz...");
                 }
-                else if (retryChoice == "NO")
+                else if (retryChoice .Equals("NO"))
                 {
                     Console.WriteLine("--------------------------------\nThank you for playing the Māori Quiz! Goodbye!");
                 }
 
-            } while (retryChoice == "YES");
+            } while (retryChoice .Equals("YES"));
 
 
 
@@ -216,7 +216,7 @@ namespace MaoriQuizqqeqe
                             // If the user inputs an invalid answer, it shows an error message and repeats the question
                         }
 
-                        if (userAnswer == easyAnswers[i].ToString())
+                        if (userAnswer .Equals(easyAnswers[i].ToString()))
                         {
 
                             Console.WriteLine("--------------------------------\nCorrect!");
@@ -256,7 +256,7 @@ namespace MaoriQuizqqeqe
                             // If the user inputs an invalid answer, it shows an error message and repeats the question
                         }
 
-                        if (userAnswer == mediumAnswers[i].ToString())
+                        if (userAnswer .Equals(mediumAnswers[i].ToString()))
                         {
                             Console.WriteLine("--------------------------------\nCorrect!");
                             userPoints++;
@@ -293,7 +293,7 @@ namespace MaoriQuizqqeqe
                             // If the user inputs an invalid answer, it shows an error message and repeats the question
                         }
 
-                        if (userAnswer == hardAnswers[i].ToString())
+                        if (userAnswer .Equals(hardAnswers[i].ToString()))
                         {
                             Console.WriteLine("--------------------------------\nCorrect!");
                             userPoints++;
