@@ -76,40 +76,46 @@ namespace MaoriQuizqqeqe
             else
             {
                 Console.WriteLine("--------------------------------\nAre you sure that this is your correct age? Y / N");
-                string ageConfirm = Console.ReadLine();
-                char ageConfirmChar = Convert.ToChar(ageConfirm);
-                ageConfirmChar = ageConfirm.Trim()[0];
-                if (ageConfirmChar == 'Y' || ageConfirmChar == 'y')
+                string ageConfirm = Console.ReadLine().Trim();
+
+                while (string.IsNullOrWhiteSpace(ageConfirm) || (ageConfirm != "Y" && ageConfirm != "y" && ageConfirm != "N" && ageConfirm != "n"))
+                {
+                    if (string.IsNullOrWhiteSpace(ageConfirm))
+                    {
+                        Console.WriteLine("--------------------------------\nYour choice cannot be empty! Please enter Y or N.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("--------------------------------\nInvalid input! Please enter Y or N.");
+                    }
+                    ageConfirm = Console.ReadLine().Trim();
+                }
+                if (ageConfirm == "Y" || ageConfirm == "y")
                 {
                     Console.WriteLine("--------------------------------\nYou must be at least 10 years old to participate in the Māori Quiz.");
                     return;
-                    // Checks if the user confirms their age and if they are not old enough, it ends the program
                 }
-                else if (ageConfirmChar == 'N' || ageConfirmChar == 'n')
+                else if (ageConfirm == "N" || ageConfirm == "n")
                 {
                     Console.WriteLine("--------------------------------\nPlease enter your correct age: ");
                     while (!int.TryParse(Console.ReadLine(), out ageEntered) || ageEntered < 10 || ageEntered > 100)
                     {
                         Console.WriteLine("--------------------------------\nYou are too young to play this quiz.");
                         return;
-                        Console.WriteLine("--------------------------------\nPlease enter a valid age: ");
-                        // Checks if the new age input is valid and between 10 and 100
                     }
                     if (ageEntered >= 10)
                     {
                         Console.WriteLine($"--------------------------------\nWelcome to the Māori Quiz, {nameEntered}!");
-                        // Checks if the new age input is old enough to play the quiz
                     }
                     else
                     {
                         Console.WriteLine("--------------------------------\nYou must be at least 10 years old to participate in the Māori Quiz.");
                         return;
-                        // If the new age input is still not old enough, it ends the program
                     }
                 }
             }
 
-            string retryChoice = "";
+                string retryChoice = "";
 
             do
             {
