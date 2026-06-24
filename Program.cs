@@ -78,7 +78,7 @@ namespace MaoriQuizqqeqe
                 Console.WriteLine("--------------------------------\nAre you sure that this is your correct age? Y / N");
                 string ageConfirm = Console.ReadLine().Trim();
 
-                while (string.IsNullOrWhiteSpace(ageConfirm) || (ageConfirm != "Y" && ageConfirm != "y" && ageConfirm != "N" && ageConfirm != "n"))
+                while (string.IsNullOrWhiteSpace(ageConfirm) || (!ageConfirm.Equals("Y") && !ageConfirm.Equals("y") && !ageConfirm.Equals("N") && !ageConfirm.Equals("n")))
                 {
                     if (string.IsNullOrWhiteSpace(ageConfirm))
                     {
@@ -141,7 +141,7 @@ namespace MaoriQuizqqeqe
                 }
                 else
                 {
-                    while (string.IsNullOrWhiteSpace(choiceForDifficulty) || (choiceForDifficulty != "e" && choiceForDifficulty != "E" && choiceForDifficulty != "m" && choiceForDifficulty != "M" && choiceForDifficulty != "h" && choiceForDifficulty != "H"))
+                    while (string.IsNullOrWhiteSpace(choiceForDifficulty) || (!choiceForDifficulty.Equals("e") && !choiceForDifficulty.Equals("E") && !choiceForDifficulty.Equals("m") && !choiceForDifficulty.Equals("M") && !choiceForDifficulty.Equals("h") && !choiceForDifficulty.Equals("H")))
                     {
                         Console.WriteLine("--------------------------------\nInvalid input. Please enter E, M, or H.");
                         choiceForDifficulty = Console.ReadLine();
@@ -164,7 +164,7 @@ namespace MaoriQuizqqeqe
                 Console.WriteLine("Would you like to retry the quiz? YES / NO");
                 retryChoice = Console.ReadLine().Trim().ToUpper();
 
-                while (string.IsNullOrWhiteSpace(retryChoice) || (retryChoice != "YES" && retryChoice != "NO"))
+                while (string.IsNullOrWhiteSpace(retryChoice) || (!retryChoice.Equals("YES") && !retryChoice.Equals("NO")))
                 {
                     if (string.IsNullOrWhiteSpace(retryChoice))
                     {
@@ -208,7 +208,7 @@ namespace MaoriQuizqqeqe
                         Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
                         string userAnswer = Console.ReadLine().ToUpper();
 
-                        if (userAnswer != "A" && userAnswer != "B" && userAnswer != "C" && userAnswer != "D")
+                        if (!userAnswer.Equals("A") && !userAnswer.Equals("B") && !userAnswer.Equals("C") && !userAnswer.Equals("D"))
                         {
                             Console.WriteLine("--------------------------------\nInvalid input. Please enter A, B, C, or D.");
                             i--;
@@ -248,7 +248,7 @@ namespace MaoriQuizqqeqe
                         Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
                         string userAnswer = Console.ReadLine().ToUpper();
 
-                        if (userAnswer != "A" && userAnswer != "B" && userAnswer != "C" && userAnswer != "D")
+                        if (!userAnswer.Equals("A") && !userAnswer.Equals("B") && !userAnswer.Equals("C") && !userAnswer.Equals("D"))
                         {
                             Console.WriteLine("--------------------------------\nInvalid input. Please enter A, B, C, or D.");
                             i--;
@@ -285,7 +285,7 @@ namespace MaoriQuizqqeqe
                         Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
                         string userAnswer = Console.ReadLine().ToUpper();
 
-                        if (userAnswer != "A" && userAnswer != "B" && userAnswer != "C" && userAnswer != "D")
+                        if (!userAnswer.Equals("A") && !userAnswer.Equals("B") && !userAnswer.Equals("C") && !userAnswer.Equals("D"))
                         {
                             Console.WriteLine("--------------------------------\nInvalid input. Please enter A, B, C, or D.");
                             i--;
