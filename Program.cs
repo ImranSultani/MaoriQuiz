@@ -108,7 +108,7 @@ namespace MaoriQuizqqeqe
                         Console.WriteLine($"--------------------------------\nWelcome to the Māori Quiz, {nameEntered}!");
                     }
                     else
-                    {
+                    {imranimran
                         Console.WriteLine("--------------------------------\nYou must be at least 10 years old to participate in the Māori Quiz.");
                         return;
                     }
@@ -172,7 +172,7 @@ namespace MaoriQuizqqeqe
                     }
                     else
                     {
-                        Console.WriteLine("--------------------------------\nInvalid Characters! Please enter YES or NO.");
+                        Console.WriteLine("--------------------------------\nInvalid answer! Please enter YES or NO.");
                     }
                     retryChoice = Console.ReadLine().Trim().ToUpper();
                 }
