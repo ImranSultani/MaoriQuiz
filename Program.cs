@@ -16,7 +16,7 @@ namespace MaoriQuizqqeqe
             Console.WriteLine("--------------------------------\nWelcome To The Maori Quiz!");
             Console.WriteLine("--------------------------------\nPlease enter your name:");
             Console.ResetColor();
-            string nameEntered = Console.ReadLine();
+            string nameEntered = Console.ReadLine().Trim();
 
             // The Welcome message and asking for the user's name, then clearing the input for the name
 
@@ -25,19 +25,19 @@ namespace MaoriQuizqqeqe
                 if (string.IsNullOrWhiteSpace(nameEntered))
                 {
                     Console.WriteLine("--------------------------------\nYour name cannot be empty! Please enter your name:");
-                    nameEntered = Console.ReadLine();
+                    nameEntered = Console.ReadLine().Trim();
                     // Checks if the name is empty or just spaces
                 }
                 if (!nameEntered.All(c => char.IsLetter(c) || c.Equals(' ')))
                 {
                     Console.WriteLine("--------------------------------\nYour name has invalid characters! Please enter your name:");
-                    nameEntered = Console.ReadLine();
+                    nameEntered = Console.ReadLine().Trim();
                     // Checks if the name as only letters and spaces
                 }
                 else if (nameEntered.Length < 2 || nameEntered.Length > 30)
                 {
                     Console.WriteLine("--------------------------------\nYour name has to be in the (2-30) character range! Please enter your name:");
-                    nameEntered = Console.ReadLine();
+                    nameEntered = Console.ReadLine().Trim();
                     // Checks if the character is over 1 letter long
 
 
@@ -108,7 +108,7 @@ namespace MaoriQuizqqeqe
                         Console.WriteLine($"--------------------------------\nWelcome to the Māori Quiz, {nameEntered}!");
                     }
                     else
-                    {imranimran
+                    {
                         Console.WriteLine("--------------------------------\nYou must be at least 10 years old to participate in the Māori Quiz.");
                         return;
                     }
@@ -206,7 +206,7 @@ namespace MaoriQuizqqeqe
                     {
                         Console.WriteLine($"--------------------------------\n{easyQuestions[i]}");
                         Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
-                        string userAnswer = Console.ReadLine().ToUpper();
+                        string userAnswer = Console.ReadLine().Trim().ToUpper();
 
                         if (!userAnswer.Equals("A") && !userAnswer.Equals("B") && !userAnswer.Equals("C") && !userAnswer.Equals("D"))
                         {
@@ -246,7 +246,7 @@ namespace MaoriQuizqqeqe
                     {
                         Console.WriteLine($"--------------------------------\n{mediumQuestions[i]}");
                         Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
-                        string userAnswer = Console.ReadLine().ToUpper();
+                        string userAnswer = Console.ReadLine().Trim().ToUpper();
 
                         if (!userAnswer.Equals("A") && !userAnswer.Equals("B") && !userAnswer.Equals("C") && !userAnswer.Equals("D"))
                         {
@@ -283,7 +283,7 @@ namespace MaoriQuizqqeqe
                     {
                         Console.WriteLine($"--------------------------------\n{hardQuestions[i]}");
                         Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
-                        string userAnswer = Console.ReadLine().ToUpper();
+                        string userAnswer = Console.ReadLine().Trim().ToUpper();
 
                         if (!userAnswer.Equals("A") && !userAnswer.Equals("B") && !userAnswer.Equals("C") && !userAnswer.Equals("D"))
                         {
