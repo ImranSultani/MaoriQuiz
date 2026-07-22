@@ -16,7 +16,7 @@ namespace MaoriQuizqqeqe
             Console.WriteLine("--------------------------------\nWelcome To The Maori Quiz!");
             Console.WriteLine("--------------------------------\nPlease enter your name:");
             Console.ResetColor();
-            string nameEntered = Console.ReadLine().Trim();
+            string nameEntered = Console.ReadLine();
 
             // The Welcome message and asking for the user's name, then clearing the input for the name
 
@@ -37,7 +37,7 @@ namespace MaoriQuizqqeqe
                 else if (nameEntered.Length < 2 || nameEntered.Length > 30)
                 {
                     Console.WriteLine("--------------------------------\nYour name has to be in the (2-30) character range! Please enter your name:");
-                    nameEntered = Console.ReadLine().Trim();
+                    nameEntered = Console.ReadLine();
                     // Checks if the character is over 1 letter long
 
 
@@ -202,7 +202,7 @@ namespace MaoriQuizqqeqe
 
                     Console.WriteLine("--------------------------------\nYou have chosen Easy difficulty!");
 
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < easyQuestions.Length; i++)
                     {
                         Console.WriteLine($"--------------------------------\n{easyQuestions[i]}");
                         Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
@@ -242,7 +242,7 @@ namespace MaoriQuizqqeqe
 
                     Console.WriteLine("--------------------------------\nYou have chosen Medium difficulty!");
 
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < mediumQuestions.Length; i++)
                     {
                         Console.WriteLine($"--------------------------------\n{mediumQuestions[i]}");
                         Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
@@ -279,7 +279,7 @@ namespace MaoriQuizqqeqe
 
                     Console.WriteLine("--------------------------------\nYou have chosen Hard difficulty!");
 
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < hardQuestions.Length; i++)
                     {
                         Console.WriteLine($"--------------------------------\n{hardQuestions[i]}");
                         Console.WriteLine("--------------------------------\nWhat is your answer? A, B, C, or D?");
